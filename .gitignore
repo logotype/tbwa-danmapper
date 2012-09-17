@@ -11,6 +11,11 @@
 *~
 *.sass-cache
 
+# Certificates
+*.p12
+*.cert
+*.mobileprovision
+
 # OS or Editor folders
 .DS_Store
 ._*
