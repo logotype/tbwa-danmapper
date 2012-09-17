@@ -1,4 +1,4 @@
-[TBWA\DAN Mapper](https://github.com/logotype/tbwa-danmapper)
+[TBWA\DAN Mapper](http://labs.tbwa.com.hk/danmapper/)
 =================
 
 Projection Mapping is a exciting projection technique that can turn almost any surface or object into a dynamic video display. DANMapper can mask and distort the projected image and make it fit perfectly on different perspectives. When done right, the end result is a dynamic projection installation that transcends ordinary video projection. 
@@ -12,6 +12,7 @@ Quick start
 
 Clone the repo, `git clone git://github.com/logotype/tbwa-danmapper.git`.
 
+Download [Build for Mac](http://labs.tbwa.com.hk/danmapper/DANMapper_0932.zip)
 
 Features
 --------
