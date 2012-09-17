@@ -14,17 +14,26 @@ Clone the repo, `git clone git://github.com/logotype/tbwa-danmapper.git`.
 
 
 Features
------------
+--------
 
-Unlimited amount of mapped elements
-Shapes: rectangles and polygons
-Direct SWF import (realtime data)
-Save and Load configurations
-Duplicate quad, quick editing
-Master/slave synchronization for multiple quads
-H264 HD video support
-Compatible with Mac, Windows and Linux
++ Unlimited amount of mapped elements
++ Shapes: rectangles and polygons
++ Direct SWF import (realtime data)
++ Save and Load configurations
++ Duplicate quad, quick editing
++ Master/slave synchronization for multiple quads
++ H264 HD video support
++ Compatible with Mac, Windows and Linux
 
+Upcoming features
+-----------------
+
++ Multi-screen/projector synching over local network
++ Bezier curved shapes
++ Better editing mode with image reference function
++ Change of video library to recent videos
++ Tablet remote control feature
++ And general bug fixing
 
 Authors
 -------
