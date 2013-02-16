@@ -28,6 +28,11 @@ Thumbs.db
 nbproject
 *.sublime-project
 *.sublime-workspace
+*.iml
+.actionScriptProperties
+.flexLibProperties
+.externalToolBuilders
+.launch
 
 # Folders to ignore
 .hg
@@ -36,3 +41,8 @@ nbproject
 .idea
 node_modules
 dist
+
+# Special case for XCode projects
+*.pbxproj -crlf -diff -merge
+*.xcuserstate
+xcuserdata/
