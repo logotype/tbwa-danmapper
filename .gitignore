@@ -46,3 +46,6 @@ dist
 *.pbxproj -crlf -diff -merge
 *.xcuserstate
 xcuserdata/
+
+bin-debug/
+
