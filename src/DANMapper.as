@@ -1,5 +1,5 @@
 /**
- * Copyright © 2013 TBWA\ Digital Arts Network
+ * Copyright © 2013 TBWA\ Digital Arts Network, Hong Kong
  * Authors: Victor Norgren, Mimosa Poon
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
