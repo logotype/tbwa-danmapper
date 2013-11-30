@@ -55,7 +55,7 @@ package com.tbwa.mapper.quad
 		public static const DIN_NEXT_LT_PRO:String = "DINNextLTPro";
 		public static const ANIMATION_TIME:int = 60;
 
-		[Embed( source = "./assets/quadnews/background.png" )]
+		[Embed( source = "/../assets/quadnews/background.png" )]
 		public var backgroundImageClass:Class;
 
 		//[Embed( source = './assets/quadnews/DINNextLTPro-Light.otf', fontWeight = 'light', fontName = 'DINNextLTPro', mimeType = 'application/x-font', advancedAntiAliasing = 'false' )]

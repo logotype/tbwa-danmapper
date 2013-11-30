@@ -56,7 +56,7 @@ package com.tbwa.mapper.editor
 		public var VIEWRECT_WIDTH:int = 927;
 		public var VIEWRECT_HEIGHT:int = 465;
 
-		[Embed( source = "./assets/grid.png" )]
+		[Embed( source = "/../assets/grid.png" )]
 		public var imageClass:Class;
 		private var grid:Bitmap;
 

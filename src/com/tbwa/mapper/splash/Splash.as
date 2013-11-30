@@ -47,7 +47,7 @@ package com.tbwa.mapper.splash
 	 */
 	public class Splash extends Sprite
 	{
-		[Embed( source = "./assets/splash.png" )]
+		[Embed( source = "/../assets/splash.png" )]
 		public var imageClass:Class;
 		private var background:Bitmap;
 
