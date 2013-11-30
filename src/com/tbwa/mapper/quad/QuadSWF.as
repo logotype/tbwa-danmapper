@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,14 +16,13 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.quad
 {
 	import com.tbwa.mapper.editor.EditorEvent;
 	import com.tbwa.mapper.editor.QuadTypes;
 
-	import flash.display.DisplayObjectContainer;
 	import flash.display.Loader;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
@@ -33,7 +32,7 @@ package com.tbwa.mapper.quad
 	/**
 	 * Quad type SWF.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class QuadSWF extends AbstractQuad
 	{
@@ -54,9 +53,9 @@ package com.tbwa.mapper.quad
 		}
 
 		/**
-		 * Triggered when stage is available. Loads the specified SWF. 
+		 * Triggered when stage is available. Loads the specified SWF.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onAddedToStageHandler( event:Event ):void
 		{
@@ -71,9 +70,9 @@ package com.tbwa.mapper.quad
 		}
 
 		/**
-		 * Triggered when SWF has loaded, gets original dimensions, scales to specified view rectangle. 
+		 * Triggered when SWF has loaded, gets original dimensions, scales to specified view rectangle.
 		 * @param event
-		 * 
+		 *
 		 */
 		protected function onLoaderCompleteHandler( event:Event ):void
 		{
@@ -89,9 +88,9 @@ package com.tbwa.mapper.quad
 		}
 
 		/**
-		 * Silent error handling. 
+		 * Silent error handling.
 		 * @param event
-		 * 
+		 *
 		 */
 		protected function onLoaderErrorHandler( event:IOErrorEvent ):void
 		{
@@ -105,9 +104,9 @@ package com.tbwa.mapper.quad
 		}
 
 		/**
-		 * Scales the SWF to the specified view rectangle. 
+		 * Scales the SWF to the specified view rectangle.
 		 * @param __scaleToViewRect
-		 * 
+		 *
 		 */
 		override public function set scaleToViewRect( __scaleToViewRect:Boolean ):void
 		{
@@ -138,7 +137,7 @@ package com.tbwa.mapper.quad
 					loader.scaleY = this.viewRect.height / originalHeight;
 				}
 			}
-			this.eventProxy.dispatchEvent( new EditorEvent( EditorEvent.UPDATE_VIEWRECT, QuadTypes.QUAD_SWF, new Rectangle( 0, 0, viewRectWidth, viewRectHeight ) ) );
+			this.eventProxy.dispatchEvent( new EditorEvent( EditorEvent.UPDATE_VIEWRECT, QuadTypes.QUAD_SWF, new Rectangle( 0, 0, viewRectWidth, viewRectHeight )));
 		}
 
 		override public function get width():Number
@@ -157,14 +156,14 @@ package com.tbwa.mapper.quad
 		}
 
 		/**
-		 * Cleans up, unloads the SWF and removes listeners. 
-		 * 
+		 * Cleans up, unloads the SWF and removes listeners.
+		 *
 		 */
 		override public function dispose():void
 		{
 			if( loader )
 			{
-				if( this.contains( loader ) )
+				if( this.contains( loader ))
 					this.removeChild( loader );
 
 				loader.contentLoaderInfo.removeEventListener( IOErrorEvent.IO_ERROR, onLoaderErrorHandler );

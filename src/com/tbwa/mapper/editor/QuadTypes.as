@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,16 +16,16 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.editor
 {
 	import com.tbwa.mapper.quad.*;
-	
+
 	/**
-	 * Embeds the Quad types into the application. 
+	 * Embeds the Quad types into the application.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class QuadTypes
 	{
@@ -38,7 +38,7 @@ package com.tbwa.mapper.editor
 		QuadVideo;
 		QuadSWF;
 		QuadCamera;
-		
+
 		public function QuadTypes()
 		{
 		}

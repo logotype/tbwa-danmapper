@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,22 +16,22 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.editor.shapes
 {
 	import com.tbwa.mapper.quad.helpers.Circle;
 	import com.tbwa.utils.DraggableSprite;
-	
+
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.geom.Rectangle;
 
 	/**
-	 * Class for a simple rectangle shape Quad. 
+	 * Class for a simple rectangle shape Quad.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class RectangleShape extends AbstractShape
 	{
@@ -78,7 +78,7 @@ package com.tbwa.mapper.editor.shapes
 
 		private function onMouseDownHandler( event:MouseEvent ):void
 		{
-			this.startDrag( false, new Rectangle( 0, 0, _viewPortWidth - area.width, _viewPortHeight - area.height ) );
+			this.startDrag( false, new Rectangle( 0, 0, _viewPortWidth - area.width, _viewPortHeight - area.height ));
 		}
 
 		private function onMouseUpHandler( event:MouseEvent ):void
@@ -86,8 +86,8 @@ package com.tbwa.mapper.editor.shapes
 			this.stopDrag();
 			this.updateHandler();
 		}
-		
-		public function updateRectangle( rectangle:Rectangle ) :void
+
+		public function updateRectangle( rectangle:Rectangle ):void
 		{
 			this.circle.x = rectangle.width;
 			this.circle.y = rectangle.height;
@@ -127,32 +127,32 @@ package com.tbwa.mapper.editor.shapes
 			area.graphics.beginFill( 0x5bc7e3, 0.5 );
 			area.graphics.drawRect( 0, 0, this.viewRect.width, this.viewRect.height );
 		}
-		
+
 		override public function get viewRectOriginal():Rectangle
 		{
 			return this.viewRect;
 		}
-		
+
 		override public function get proportionalX():Number
 		{
 			return this._contentWidth * ( this.viewRect.x / _viewPortWidth );
 		}
-		
+
 		override public function get proportionalY():Number
 		{
 			return this._contentHeight * ( this.viewRect.y / _viewPortHeight );
 		}
-		
+
 		override public function get proportionalWidth():Number
 		{
 			return this._contentWidth * ( circle.x / _viewPortWidth );
 		}
-		
+
 		override public function get proportionalHeight():Number
 		{
 			return this._contentHeight * ( circle.y / _viewPortHeight );
 		}
-		
+
 		override public function get proportionalRectangle():Rectangle
 		{
 			return new Rectangle( this.proportionalX, this.proportionalY, this.proportionalWidth, this.proportionalHeight );
@@ -162,9 +162,9 @@ package com.tbwa.mapper.editor.shapes
 		{
 			while( this.points.length > 0 )
 				this.points.pop();
-			
+
 			this.points = null;
-			
+
 			this.removeEventListener( Event.ADDED_TO_STAGE, onAddedToStageHandler );
 			this.removeEventListener( Event.REMOVED_FROM_STAGE, onRemovedFromStageHandler );
 			area.removeEventListener( MouseEvent.MOUSE_DOWN, onMouseDownHandler );
@@ -173,7 +173,7 @@ package com.tbwa.mapper.editor.shapes
 
 		private function onRightClickHandler( event:MouseEvent ):void
 		{
-			this.dispatchEvent( new AbstractShapeEvent( AbstractShapeEvent.REMOVE ) );
+			this.dispatchEvent( new AbstractShapeEvent( AbstractShapeEvent.REMOVE ));
 			this.parent.removeChild( this );
 		}
 	}

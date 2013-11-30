@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,7 +16,7 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.editor
 {
@@ -30,23 +30,19 @@ package com.tbwa.mapper.editor
 	import com.tbwa.mapper.editor.shapes.PolygonShape;
 	import com.tbwa.mapper.editor.shapes.RectangleShape;
 	import com.tbwa.mapper.quad.AbstractQuad;
-	import com.tbwa.mapper.quad.helpers.PerspectiveSprite;
 
 	import flash.display.Bitmap;
 	import flash.display.DisplayObjectContainer;
-	import flash.display.Shape;
-	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.filters.DropShadowFilter;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
-	import flash.utils.getDefinitionByName;
 
 	/**
-	 * Main class for Editor. Create polys/rectangles and so on. 
+	 * Main class for Editor. Create polys/rectangles and so on.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class Editor extends Window
 	{
@@ -104,12 +100,12 @@ package com.tbwa.mapper.editor
 					break;
 			}
 
-			this.filters = [ new DropShadowFilter( 0, 0, 0x000000, 1, 35, 35, 1, Preferences.UI_SHADOW_QUALITY ) ];
+			this.filters = [ new DropShadowFilter( 0, 0, 0x000000, 1, 35, 35, 1, Preferences.UI_SHADOW_QUALITY )];
 		}
 
 		/**
-		 * Sets mode to NEW (creating new quads). 
-		 * 
+		 * Sets mode to NEW (creating new quads).
+		 *
 		 */
 		private function initializeNew():void
 		{
@@ -138,8 +134,8 @@ package com.tbwa.mapper.editor
 		}
 
 		/**
-		 * Sets mode to EDIT (when editing existing quads). 
-		 * 
+		 * Sets mode to EDIT (when editing existing quads).
+		 *
 		 */
 		private function initializeEdit():void
 		{
@@ -165,7 +161,7 @@ package com.tbwa.mapper.editor
 				editRectangle = new PolygonShape( VIEWRECT_WIDTH, VIEWRECT_HEIGHT, VIEWRECT_WIDTH, VIEWRECT_HEIGHT, abstractQuad.width, abstractQuad.height, true );
 
 				for( var i:int = 0; i < abstractQuad.maskPointsOriginal.length; ++i )
-					( editRectangle as PolygonShape ).addPoint( new Point( abstractQuad.maskPointsOriginal[ i ].x, abstractQuad.maskPointsOriginal[ i ].y ) );
+					( editRectangle as PolygonShape ).addPoint( new Point( abstractQuad.maskPointsOriginal[ i ].x, abstractQuad.maskPointsOriginal[ i ].y ));
 
 				this.addChild( editRectangle );
 				this.shapes.push( editRectangle );
@@ -197,7 +193,7 @@ package com.tbwa.mapper.editor
 
 		private function synchronize( event:MouseEvent = null ):void
 		{
-			EventProxy.getInstance().dispatchEvent( new ContentEvent( ContentEvent.RESTART_MASTER ) );
+			EventProxy.getInstance().dispatchEvent( new ContentEvent( ContentEvent.RESTART_MASTER ));
 		}
 
 		private function addRectangle( event:MouseEvent = null ):void
@@ -238,7 +234,7 @@ package com.tbwa.mapper.editor
 
 		private function addPoly( event:MouseEvent = null ):void
 		{
-			if( !editRectangle || !( editRectangle is PolygonShape ) )
+			if( !editRectangle || !( editRectangle is PolygonShape ))
 			{
 				quadButton.visible = false;
 				quadHalfWidthButton.visible = false;
@@ -250,9 +246,9 @@ package com.tbwa.mapper.editor
 				editRectangle = new PolygonShape( VIEWRECT_WIDTH, VIEWRECT_HEIGHT, VIEWRECT_WIDTH, VIEWRECT_HEIGHT, abstractQuad.width, abstractQuad.height, true );
 
 				// Create default polygon
-				( editRectangle as PolygonShape ).addPoint( new Point( VIEWRECT_WIDTH * .5 - 200, VIEWRECT_HEIGHT * .5 - 200 ) );
-				( editRectangle as PolygonShape ).addPoint( new Point( VIEWRECT_WIDTH * .5 + 200, VIEWRECT_HEIGHT * .5 - 200 ) );
-				( editRectangle as PolygonShape ).addPoint( new Point( VIEWRECT_WIDTH * .5, VIEWRECT_HEIGHT * .5 + 200 ) );
+				( editRectangle as PolygonShape ).addPoint( new Point( VIEWRECT_WIDTH * .5 - 200, VIEWRECT_HEIGHT * .5 - 200 ));
+				( editRectangle as PolygonShape ).addPoint( new Point( VIEWRECT_WIDTH * .5 + 200, VIEWRECT_HEIGHT * .5 - 200 ));
+				( editRectangle as PolygonShape ).addPoint( new Point( VIEWRECT_WIDTH * .5, VIEWRECT_HEIGHT * .5 + 200 ));
 
 				this.addChild( editRectangle );
 				this.shapes.push( editRectangle );
@@ -275,7 +271,7 @@ package com.tbwa.mapper.editor
 
 		private function onRemoveRectangleHandler( event:AbstractShapeEvent ):void
 		{
-			if( !( event.target is AbstractShape ) )
+			if( !( event.target is AbstractShape ))
 				return;
 
 			var i:int = 0;
@@ -286,7 +282,7 @@ package com.tbwa.mapper.editor
 
 		private function onRemovedFromStageHandler( event:Event ):void
 		{
-			if( this.contains( abstractQuad ) )
+			if( this.contains( abstractQuad ))
 				abstractQuad.parent.removeChild( abstractQuad );
 
 			// If edit mode, don't dispose the quad (it's reused)
@@ -305,9 +301,9 @@ package com.tbwa.mapper.editor
 		}
 
 		/**
-		 * Loops through all created Quads, dispatches EditorEvents to create and add them to stage. 
+		 * Loops through all created Quads, dispatches EditorEvents to create and add them to stage.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function saveAndClose( event:MouseEvent = null ):void
 		{
@@ -324,21 +320,21 @@ package com.tbwa.mapper.editor
 			{
 				case Editor.MODE_NEW:
 					for( i = 0; i < this.shapes.length; ++i )
-						EventProxy.getInstance().dispatchEvent( new EditorEvent( EditorEvent.ADD, quadType, this.shapes[ i ].proportionalRectangle, this.shapes[ i ].isMaster, groupID, abstractQuad.filePath, this.shapes[ i ].maskPoints, this.shapes[ i ].maskPointsOriginal, this.shapes[ i ].viewRectOriginal ) );
+						EventProxy.getInstance().dispatchEvent( new EditorEvent( EditorEvent.ADD, quadType, this.shapes[ i ].proportionalRectangle, this.shapes[ i ].isMaster, groupID, abstractQuad.filePath, this.shapes[ i ].maskPoints, this.shapes[ i ].maskPointsOriginal, this.shapes[ i ].viewRectOriginal ));
 					break;
 
 				case Editor.MODE_EDIT:
 					for( i = 0; i < this.shapes.length; ++i )
-						EventProxy.getInstance().dispatchEvent( new EditorEvent( EditorEvent.EDIT, quadType, this.shapes[ i ].proportionalRectangle, this.shapes[ i ].isMaster, groupID, abstractQuad.filePath, this.shapes[ i ].maskPoints, this.shapes[ i ].maskPointsOriginal, this.shapes[ i ].viewRectOriginal, abstractQuad ) );
+						EventProxy.getInstance().dispatchEvent( new EditorEvent( EditorEvent.EDIT, quadType, this.shapes[ i ].proportionalRectangle, this.shapes[ i ].isMaster, groupID, abstractQuad.filePath, this.shapes[ i ].maskPoints, this.shapes[ i ].maskPointsOriginal, this.shapes[ i ].viewRectOriginal, abstractQuad ));
 					break;
 			}
-			this.dispatchEvent( new Event( Event.CLOSE, true, true ) );
+			this.dispatchEvent( new Event( Event.CLOSE, true, true ));
 		}
 
 		/**
-		 * Handler method for creating a unique ID for master/slave synchronization groups. 
-		 * @return 
-		 * 
+		 * Handler method for creating a unique ID for master/slave synchronization groups.
+		 * @return
+		 *
 		 */
 		private function generateRandomString():String
 		{
@@ -348,7 +344,7 @@ package com.tbwa.mapper.editor
 			var i:int = 0;
 
 			for( i; i < 32; ++i )
-				randomLetter += alphabet[ Math.floor( Math.random() * alphabet.length ) ];
+				randomLetter += alphabet[ Math.floor( Math.random() * alphabet.length )];
 
 			return randomLetter;
 		}

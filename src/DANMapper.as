@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network, Hong Kong
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,15 +16,14 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
-package 
+package
 {
 	import com.tbwa.mapper.ContentEvent;
 	import com.tbwa.mapper.EventProxy;
 	import com.tbwa.mapper.editor.Editor;
 	import com.tbwa.mapper.editor.EditorEvent;
-	import com.tbwa.mapper.editor.QuadTypes;
 	import com.tbwa.mapper.quad.AbstractQuad;
 	import com.tbwa.mapper.quad.helpers.PerspectiveSprite;
 	import com.tbwa.mapper.quad.helpers.PerspectiveSpriteEvent;
@@ -32,10 +31,8 @@ package
 	import com.tbwa.mapper.toolbox.ToolBox;
 	import com.tbwa.mapper.toolbox.ToolBoxEvent;
 	import com.tbwa.utils.Base64;
-	
-	import flash.display.Bitmap;
+
 	import flash.display.DisplayObject;
-	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
@@ -48,7 +45,6 @@ package
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
 	import flash.filesystem.FileStream;
-	import flash.geom.PerspectiveProjection;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import flash.ui.ContextMenu;
@@ -56,17 +52,6 @@ package
 	import flash.ui.Keyboard;
 	import flash.ui.Mouse;
 	import flash.utils.getDefinitionByName;
-	
-	/*
-	* 2012-08-16 @victor
-	*
-	* To build with captive runtime:
-	* adt -package -storetype pkcs12 -keystore tbwahk.p12 -keypass tbwahk -target bundle DANMapper.app DANMapper-app.xml DANMapper.swf icons
-	*
-	* To build AIR package:
-	* adt -package -storetype pkcs12 -keystore tbwahk.p12 -keypass tbwahk -target native DANMapper.air DANMapper-app.xml DANMapper.swf icons
-	*
-	*/
 
 	[SWF( width = "1024", height = "768", backgroundColor = "#000000", frameRate = "60" )]
 	public class DANMapper extends MovieClip
@@ -85,8 +70,8 @@ package
 		private var editor:Editor;
 
 		/**
-		 * Constructor. Sets up proxy listeners for various functionality. 
-		 * 
+		 * Constructor. Sets up proxy listeners for various functionality.
+		 *
 		 */
 		public function DANMapper()
 		{
@@ -103,15 +88,15 @@ package
 		}
 
 		/**
-		 * Triggered when stage is available. Adds UI and sets fullscreen mode. 
+		 * Triggered when stage is available. Adds UI and sets fullscreen mode.
 		 * @param event
-		 * 
+		 *
 		 */
 		protected function onAddedToStageHandler( event:Event ):void
 		{
 			this.stage.scaleMode = StageScaleMode.NO_SCALE;
 			this.stage.align = StageAlign.TOP_LEFT;
-			
+
 			// Maximize window and set fullscreen
 			this.stage.nativeWindow.maximize();
 			this.stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
@@ -130,13 +115,13 @@ package
 			onShowAboutHandler();
 			onToggleKeyboardShortcutsHandler();
 		}
-		
+
 		/**
-		 * Enables or disables keyboard shortcuts. 
+		 * Enables or disables keyboard shortcuts.
 		 * @param event
-		 * 
-		 */		
-		private function onToggleKeyboardShortcutsHandler( event:Event = null ) :void
+		 *
+		 */
+		private function onToggleKeyboardShortcutsHandler( event:Event = null ):void
 		{
 			if( !hasKeyboardShortcuts )
 			{
@@ -151,13 +136,13 @@ package
 				this.stage.removeEventListener( KeyboardEvent.KEY_UP, onKeyUpHandler );
 			}
 		}
-		
+
 		/**
-		 * Handler method for keyboard events. 
+		 * Handler method for keyboard events.
 		 * @param event
-		 * 
+		 *
 		 */
-		private function onKeyUpHandler( event:KeyboardEvent ) :void
+		private function onKeyUpHandler( event:KeyboardEvent ):void
 		{
 			switch( event.keyCode )
 			{
@@ -188,7 +173,7 @@ package
 					break;
 				case Keyboard.R:
 					// Restarts clips (synchronize)
-					EventProxy.getInstance().dispatchEvent( new ContentEvent( ContentEvent.RESTART_MASTER ) );
+					EventProxy.getInstance().dispatchEvent( new ContentEvent( ContentEvent.RESTART_MASTER ));
 					break;
 				default:
 					break;
@@ -198,7 +183,7 @@ package
 		/**
 		 * Shows/hides UI elements.
 		 * @param event
-		 * 
+		 *
 		 */
 		protected function onToggleUIHandler( event:Event = null ):void
 		{
@@ -217,21 +202,21 @@ package
 				Mouse.show();
 			}
 		}
-		
+
 		/**
-		 * Displays the About-view. 
+		 * Displays the About-view.
 		 * @param event
-		 * 
+		 *
 		 */
-		private function onShowAboutHandler( event:Event = null ) :void
+		private function onShowAboutHandler( event:Event = null ):void
 		{
-			this.addChild( new Splash() );
+			this.addChild( new Splash());
 		}
 
 		/**
-		 * Triggered when Editor dispatches a new Quad to be added. 
+		 * Triggered when Editor dispatches a new Quad to be added.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onAddedQuadHandler( event:EditorEvent ):void
 		{
@@ -278,9 +263,9 @@ package
 		}
 
 		/**
-		 * Triggered when Editor dispatches a Quad to be edited. 
+		 * Triggered when Editor dispatches a Quad to be edited.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onEditedQuadHandler( event:EditorEvent ):void
 		{
@@ -293,7 +278,7 @@ package
 			{
 				if( this.getChildAt( i ) is PerspectiveSprite )
 				{
-					perspectiveSprite = PerspectiveSprite( this.getChildAt( i ) );
+					perspectiveSprite = PerspectiveSprite( this.getChildAt( i ));
 
 					if( perspectiveSprite.contentReference == event.quad )
 					{
@@ -303,10 +288,10 @@ package
 						abstractQuad.scaleToViewRect = false;
 						abstractQuad.viewRect = event.viewRect;
 						abstractQuad.viewRectOriginal = event.viewRectOriginal;
-						
+
 						perspectiveSprite.addChildAt( abstractQuad, 0 );
 						perspectiveSprite.visible = true;
-						
+
 						if( event.maskPoints )
 						{
 							var maskSprite:Sprite = new Sprite();
@@ -329,9 +314,9 @@ package
 		}
 
 		/**
-		 * Saves current stage to disk (XML format). Currently saved to desktop. 
+		 * Saves current stage to disk (XML format). Currently saved to desktop.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onSaveHandler( event:EditorEvent = null ):void
 		{
@@ -363,7 +348,7 @@ package
 					perspectiveSprite = PerspectiveSprite( currentChild );
 					if( perspectiveSprite.getChildAt( 0 ) is AbstractQuad )
 					{
-						quad = AbstractQuad( perspectiveSprite.getChildAt( 0 ) );
+						quad = AbstractQuad( perspectiveSprite.getChildAt( 0 ));
 
 						item = <item />;
 						item.@x = perspectiveSprite.x;
@@ -460,7 +445,7 @@ package
 		/**
 		 * Loads configuration (XML format). Currently loads from desktop.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onLoadHandler( event:EditorEvent = null ):void
 		{
@@ -491,7 +476,7 @@ package
 
 			try
 			{
-				xml = XML( fileStream.readUTFBytes( fileStream.bytesAvailable ) );
+				xml = XML( fileStream.readUTFBytes( fileStream.bytesAvailable ));
 			}
 			catch( error:Error )
 			{
@@ -505,39 +490,39 @@ package
 
 			for( i; i < itemList.length(); ++i )
 			{
-				container = new PerspectiveSprite( Number( itemList[ i ].viewport.@width ), Number( itemList[ i ].viewport.@height ) );
+				container = new PerspectiveSprite( Number( itemList[ i ].viewport.@width ), Number( itemList[ i ].viewport.@height ));
 				container.quadType = itemList[ i ].@type;
 				container.x = Number( itemList[ i ].@x );
 				container.y = Number( itemList[ i ].@y );
 				container.addEventListener( MouseEvent.ROLL_OVER, onClickHandler );
 
-				container._ui.p1.point = new Point( Number( itemList[ i ]..controlpoint.( @id == "cp1" ).@x ), Number( itemList[ i ]..controlpoint.( @id == "cp1" ).@y ) );
-				container._ui.p2.point = new Point( Number( itemList[ i ]..controlpoint.( @id == "cp2" ).@x ), Number( itemList[ i ]..controlpoint.( @id == "cp2" ).@y ) );
-				container._ui.p3.point = new Point( Number( itemList[ i ]..controlpoint.( @id == "cp3" ).@x ), Number( itemList[ i ]..controlpoint.( @id == "cp3" ).@y ) );
-				container._ui.p4.point = new Point( Number( itemList[ i ]..controlpoint.( @id == "cp4" ).@x ), Number( itemList[ i ]..controlpoint.( @id == "cp4" ).@y ) );
+				container._ui.p1.point = new Point( Number( itemList[ i ]..controlpoint.( @id == "cp1" ).@x ), Number( itemList[ i ]..controlpoint.( @id == "cp1" ).@y ));
+				container._ui.p2.point = new Point( Number( itemList[ i ]..controlpoint.( @id == "cp2" ).@x ), Number( itemList[ i ]..controlpoint.( @id == "cp2" ).@y ));
+				container._ui.p3.point = new Point( Number( itemList[ i ]..controlpoint.( @id == "cp3" ).@x ), Number( itemList[ i ]..controlpoint.( @id == "cp3" ).@y ));
+				container._ui.p4.point = new Point( Number( itemList[ i ]..controlpoint.( @id == "cp4" ).@x ), Number( itemList[ i ]..controlpoint.( @id == "cp4" ).@y ));
 
 				this.addChild( container );
 
-				contentClass = getDefinitionByName( String( itemList[ i ].@type ) ) as Class;
+				contentClass = getDefinitionByName( String( itemList[ i ].@type )) as Class;
 				content = new contentClass() as AbstractQuad;
 				content.isMaster = String( itemList[ i ].@isMaster ) == "true" ? true : false;
-				content.viewRect = new Rectangle( Number( itemList[ i ].viewport.@x ), Number( itemList[ i ].viewport.@y ), Number( itemList[ i ].viewport.@width ), Number( itemList[ i ].viewport.@height ) );
-				content.viewRectOriginal = new Rectangle( Number( itemList[ i ].viewportoriginal.@x ), Number( itemList[ i ].viewportoriginal.@y ), Number( itemList[ i ].viewportoriginal.@width ), Number( itemList[ i ].viewportoriginal.@height ) );
+				content.viewRect = new Rectangle( Number( itemList[ i ].viewport.@x ), Number( itemList[ i ].viewport.@y ), Number( itemList[ i ].viewport.@width ), Number( itemList[ i ].viewport.@height ));
+				content.viewRectOriginal = new Rectangle( Number( itemList[ i ].viewportoriginal.@x ), Number( itemList[ i ].viewportoriginal.@y ), Number( itemList[ i ].viewportoriginal.@width ), Number( itemList[ i ].viewportoriginal.@height ));
 				content.groupID = itemList[ i ].@groupID;
-				content.filePath = Base64.decode( String( itemList[ i ].@filePath ) );
+				content.filePath = Base64.decode( String( itemList[ i ].@filePath ));
 				container.contentReference = content;
 				container.addChildAt( content, 0 );
 
 				// Assign the contextMenu after all properties has been set (to be sure)
 				container.contextMenu = contextMenuHandler( container );
 
-				if( itemList[ i ].hasOwnProperty( "maskpoints" ) )
+				if( itemList[ i ].hasOwnProperty( "maskpoints" ))
 				{
 					maskPoints = itemList[ i ].maskpoints..point;
 
 					// Loop through xml and create temporary vector
 					for( j = 0; j < maskPoints.length(); ++j )
-						maskPointsVector.push( new Point( Number( maskPoints[ j ].@x ), Number( maskPoints[ j ].@y ) ) );
+						maskPointsVector.push( new Point( Number( maskPoints[ j ].@x ), Number( maskPoints[ j ].@y )));
 
 					if( maskPoints.length() > 0 )
 					{
@@ -560,12 +545,12 @@ package
 						}
 					}
 
-					if( itemList[ i ].hasOwnProperty( "maskpointsoriginal" ) )
+					if( itemList[ i ].hasOwnProperty( "maskpointsoriginal" ))
 					{
 						maskPointsOriginal = itemList[ i ].maskpointsoriginal..point;
 
 						for( j = 0; j < maskPointsOriginal.length(); ++j )
-							maskPointsOriginalVector.push( new Point( Number( maskPointsOriginal[ j ].@x ), Number( maskPointsOriginal[ j ].@y ) ) );
+							maskPointsOriginalVector.push( new Point( Number( maskPointsOriginal[ j ].@x ), Number( maskPointsOriginal[ j ].@y )));
 
 						if( currentChild is PerspectiveSprite )
 							( currentChild as PerspectiveSprite ).contentReference.maskPointsOriginal = maskPointsOriginalVector;
@@ -573,22 +558,22 @@ package
 				}
 			}
 		}
-		
+
 		/**
-		 * Triggered when a Quad is moved/transformed. Updates it's context menu. 
+		 * Triggered when a Quad is moved/transformed. Updates it's context menu.
 		 * @param event
-		 * 
+		 *
 		 */
-		private function onSpriteChangedHandler( event:PerspectiveSpriteEvent ) :void
+		private function onSpriteChangedHandler( event:PerspectiveSpriteEvent ):void
 		{
 			event.perspectiveSprite.contextMenu = contextMenuHandler( event.perspectiveSprite );
 		}
 
 		/**
-		 * Handler method for a Quads context menu. Displays pos/size/etc as well as edit functions. 
+		 * Handler method for a Quads context menu. Displays pos/size/etc as well as edit functions.
 		 * @param container
-		 * @return 
-		 * 
+		 * @return
+		 *
 		 */
 		private function contextMenuHandler( container:PerspectiveSprite ):ContextMenu
 		{
@@ -648,15 +633,15 @@ package
 		}
 
 		/**
-		 * Handler function for context menu selection. 
+		 * Handler function for context menu selection.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onContextMenuSelectHandler( event:ContextMenuEvent ):void
 		{
 			var item:ContextMenuItem = ContextMenuItem( event.target );
 
-			switch( item.label.toLowerCase() )
+			switch( item.label.toLowerCase())
 			{
 				case "edit":
 					if( editor )
@@ -667,10 +652,10 @@ package
 					editor.addEventListener( Event.CLOSE, onCloseEditorHandler );
 					break;
 				case "duplicate":
-					duplicateObject( PerspectiveSprite( item.data ) );
+					duplicateObject( PerspectiveSprite( item.data ));
 					break;
 				case "delete":
-					deleteObject( PerspectiveSprite( item.data ) );
+					deleteObject( PerspectiveSprite( item.data ));
 					break;
 				case "send to back":
 					this.addChildAt( PerspectiveSprite( item.data ), 1 );
@@ -679,24 +664,24 @@ package
 		}
 
 		/**
-		 * Closes the Editor view. 
+		 * Closes the Editor view.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onCloseEditorHandler( event:Event ):void
 		{
 			editor.removeEventListener( Event.CLOSE, onCloseEditorHandler );
 
-			if( this.parent.contains( editor ) )
+			if( this.parent.contains( editor ))
 				this.parent.removeChild( editor );
 
 			editor = null;
 		}
 
 		/**
-		 * Clicking a quad moves it to front. 
+		 * Clicking a quad moves it to front.
 		 * @param event
-		 * 
+		 *
 		 */
 		protected function onClickHandler( event:MouseEvent ):void
 		{
@@ -705,9 +690,9 @@ package
 		}
 
 		/**
-		 * Removes the Quad. Cleans up (removes listeners, stops timers, etc). 
+		 * Removes the Quad. Cleans up (removes listeners, stops timers, etc).
 		 * @param object
-		 * 
+		 *
 		 */
 		protected function deleteObject( object:PerspectiveSprite ):void
 		{
@@ -716,9 +701,9 @@ package
 		}
 
 		/**
-		 * Makes a copy of the selected Quad. 
+		 * Makes a copy of the selected Quad.
 		 * @param object
-		 * 
+		 *
 		 */
 		protected function duplicateObject( object:PerspectiveSprite ):void
 		{
@@ -765,9 +750,9 @@ package
 		}
 
 		/**
-		 * Handler function for stage resize. Moves the toolbox in place. 
+		 * Handler function for stage resize. Moves the toolbox in place.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onResizeHandler( event:Event = null ):void
 		{

@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,17 +16,13 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.quad
 {
 	import com.tbwa.mapper.ContentEvent;
-	import com.tbwa.mapper.EventProxy;
 	import com.tbwa.mapper.quad.AbstractQuad;
-	
-	import flash.display.Sprite;
-	import flash.display.StageAlign;
-	import flash.display.StageScaleMode;
+
 	import flash.events.Event;
 	import flash.events.NetStatusEvent;
 	import flash.geom.Rectangle;
@@ -36,16 +32,16 @@ package com.tbwa.mapper.quad
 	import flash.net.NetStream;
 
 	/**
-	 * Quad type Video, supports various video formats. 
+	 * Quad type Video, supports various video formats.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class QuadVideo extends AbstractQuad
 	{
 		private var video:Video;
 		private var netConnection:NetConnection;
 		private var netStream:NetStream;
-		
+
 		private var _originalWidth:Number = 0;
 		private var _originalHeight:Number = 0;
 
@@ -57,7 +53,7 @@ package com.tbwa.mapper.quad
 
 			netConnection = new NetConnection();
 			netConnection.connect( null );
-			
+
 			netStream = new NetStream( netConnection );
 			/*netStream.inBufferSeek = true;
 			netStream.backBufferTime = 0;
@@ -72,9 +68,9 @@ package com.tbwa.mapper.quad
 		}
 
 		/**
-		 * Triggered from a RESTART_MASTER event. 
+		 * Triggered from a RESTART_MASTER event.
 		 * @param event
-		 * 
+		 *
 		 */
 		protected function onRestartMasterHandler( event:Event ):void
 		{
@@ -82,14 +78,14 @@ package com.tbwa.mapper.quad
 			{
 				if( netStream )
 					netStream.seek( 0 );
-				eventProxy.dispatchEvent( new ContentEvent( ContentEvent.RESTART, this.groupID ) );
+				eventProxy.dispatchEvent( new ContentEvent( ContentEvent.RESTART, this.groupID ));
 			}
 		}
 
 		/**
-		 * Triggered from a RESTART event. (Master triggered slave). 
+		 * Triggered from a RESTART event. (Master triggered slave).
 		 * @param event
-		 * 
+		 *
 		 */
 		protected function onRestartHandler( event:ContentEvent ):void
 		{
@@ -98,9 +94,9 @@ package com.tbwa.mapper.quad
 		}
 
 		/**
-		 * Triggered when stage is available. Attaches NetStream and prepares volume. (Slave is silent, Master has sound). 
+		 * Triggered when stage is available. Attaches NetStream and prepares volume. (Slave is silent, Master has sound).
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onAddedToStageHandler( event:Event ):void
 		{
@@ -124,15 +120,15 @@ package com.tbwa.mapper.quad
 		}
 
 		/**
-		 * Sets width and height of viewport based on video-size. 
+		 * Sets width and height of viewport based on video-size.
 		 * @param info
-		 * 
+		 *
 		 */
 		public function onMetaDataHandler( info:Object ):void
 		{
 			this._originalWidth = info.width;
 			this._originalHeight = info.height;
-			
+
 			if( this.scaleToViewRect && this.viewRect )
 			{
 				video.width = this.viewRect.width;
@@ -146,9 +142,9 @@ package com.tbwa.mapper.quad
 		}
 
 		/**
-		 * Handler method for NetStream. Restarts when video has ended. 
+		 * Handler method for NetStream. Restarts when video has ended.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onNetStatusHandler( event:NetStatusEvent ):void
 		{
@@ -158,7 +154,7 @@ package com.tbwa.mapper.quad
 					if( this.isMaster )
 					{
 						netStream.seek( 0 );
-						eventProxy.dispatchEvent( new ContentEvent( ContentEvent.RESTART, this.groupID ) );
+						eventProxy.dispatchEvent( new ContentEvent( ContentEvent.RESTART, this.groupID ));
 					}
 					break;
 			}
@@ -171,9 +167,9 @@ package com.tbwa.mapper.quad
 		}
 
 		/**
-		 * Scales video to the specified view rectangle. 
+		 * Scales video to the specified view rectangle.
 		 * @param __scaleToViewRect
-		 * 
+		 *
 		 */
 		override public function set scaleToViewRect( __scaleToViewRect:Boolean ):void
 		{
@@ -194,10 +190,10 @@ package com.tbwa.mapper.quad
 		{
 			return this._originalHeight;
 		}
-		
+
 		/**
-		 * Cleans up, removes listeners, stops and clears the NetStream object. 
-		 * 
+		 * Cleans up, removes listeners, stops and clears the NetStream object.
+		 *
 		 */
 		override public function dispose():void
 		{
@@ -207,10 +203,10 @@ package com.tbwa.mapper.quad
 				eventProxy.removeEventListener( ContentEvent.RESTART, onRestartHandler );
 				eventProxy = null;
 			}
-			
+
 			if( video )
 				video.attachNetStream( null );
-			
+
 			if( netStream )
 			{
 				netStream.close();
@@ -218,13 +214,13 @@ package com.tbwa.mapper.quad
 				netStream.client.onMetaData = null;
 				netStream = null;
 			}
-			
+
 			if( netConnection )
 			{
 				netConnection.close();
 				netConnection = null;
 			}
-			
+
 			super.dispose();
 		}
 	}

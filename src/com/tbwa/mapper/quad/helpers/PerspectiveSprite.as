@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,14 +16,14 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.quad.helpers
 {
 	import com.tbwa.mapper.ContentEvent;
 	import com.tbwa.mapper.EventProxy;
 	import com.tbwa.mapper.quad.AbstractQuad;
-	
+
 	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
 	import flash.display.Sprite;
@@ -34,9 +34,9 @@ package com.tbwa.mapper.quad.helpers
 	import flash.ui.Mouse;
 
 	/**
-	 * Main class for Quad transformation. Matrix calculations for correct perspective-projection. 
+	 * Main class for Quad transformation. Matrix calculations for correct perspective-projection.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class PerspectiveSprite extends Sprite
 	{
@@ -85,9 +85,9 @@ package com.tbwa.mapper.quad.helpers
 		}
 
 		/**
-		 * Adds various listeners and triggers a RESTART event. 
+		 * Adds various listeners and triggers a RESTART event.
 		 * @param event
-		 * 
+		 *
 		 */
 		protected function onAddedToStageHandler( event:Event ):void
 		{
@@ -98,13 +98,13 @@ package com.tbwa.mapper.quad.helpers
 			this.addEventListener( MouseEvent.ROLL_OUT, onMouseOutHandler );
 			this.stage.addEventListener( MouseEvent.MOUSE_UP, onMouseUpHandler );
 
-			EventProxy.getInstance().dispatchEvent( new ContentEvent( ContentEvent.RESTART ) );
+			EventProxy.getInstance().dispatchEvent( new ContentEvent( ContentEvent.RESTART ));
 		}
 
 		/**
-		 * Cleans up and removes listeners, removes child objects, etc. 
+		 * Cleans up and removes listeners, removes child objects, etc.
 		 * @param event
-		 * 
+		 *
 		 */
 		protected function onRemovedFromStageHandler( event:Event ):void
 		{
@@ -133,10 +133,10 @@ package com.tbwa.mapper.quad.helpers
 		}
 
 		/**
-		 * Updates the viewport, redraws the checkerboard. 
+		 * Updates the viewport, redraws the checkerboard.
 		 * @param __assumedWidth
 		 * @param __assumedHeight
-		 * 
+		 *
 		 */
 		public function updateViewRect( __assumedWidth:Number, __assumedHeight:Number ):void
 		{
@@ -154,11 +154,11 @@ package com.tbwa.mapper.quad.helpers
 		}
 
 		/**
-		 * Draws a checkerboard which is visible when hovering (to easily see the dimensions). 
+		 * Draws a checkerboard which is visible when hovering (to easily see the dimensions).
 		 * @param sprite
 		 * @param width
 		 * @param height
-		 * 
+		 *
 		 */
 		private function drawCheckerBoard( sprite:Sprite, width:Number, height:Number ):void
 		{
@@ -216,14 +216,14 @@ package com.tbwa.mapper.quad.helpers
 		{
 			Mouse.show();
 			this.stopDrag();
-			EventProxy.getInstance().dispatchEvent( new PerspectiveSpriteEvent( PerspectiveSpriteEvent.UPDATE_CONTEXTMENU, this ) );
+			EventProxy.getInstance().dispatchEvent( new PerspectiveSpriteEvent( PerspectiveSpriteEvent.UPDATE_CONTEXTMENU, this ));
 		}
 
 		/**
 		 * Draws the Quad with correct perspective. This is the core functionality of the whole application. Huge thanks to wh0 and matlab.
-		 * 
+		 *
 		 * @see http://wonderfl.net/c/sxQJ
-		 * 
+		 *
 		 */
 		private function redrawPerspective():void
 		{
@@ -264,9 +264,9 @@ package com.tbwa.mapper.quad.helpers
 		}
 
 		/**
-		 * Sets the DisplayObject masking. 
+		 * Sets the DisplayObject masking.
 		 * @param _maskSprite
-		 * 
+		 *
 		 */
 		public function set maskSprite( _maskSprite:Sprite ):void
 		{
@@ -274,7 +274,7 @@ package com.tbwa.mapper.quad.helpers
 			{
 				this.contentReference.mask = null;
 
-				if( this._container3d.contains( this._maskSprite ) )
+				if( this._container3d.contains( this._maskSprite ))
 					this._container3d.removeChild( this._maskSprite );
 
 				this._maskSprite = null;
@@ -357,10 +357,10 @@ package com.tbwa.mapper.quad.helpers
 		override public function get numChildren():int
 		{
 			var returnValue:int = 0;
-			
+
 			if( _container3d )
 				returnValue = _container3d.numChildren;
-			
+
 			return returnValue;
 		}
 	}

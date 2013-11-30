@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,20 +16,20 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.editor.shapes
 {
 	import com.tbwa.mapper.quad.helpers.Circle;
-	
+
 	import flash.display.Sprite;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
-	
+
 	/**
-	 * Abstract class for all shapes. 
+	 * Abstract class for all shapes.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class AbstractShape extends Sprite
 	{
@@ -40,42 +40,42 @@ package com.tbwa.mapper.editor.shapes
 		public function AbstractShape()
 		{
 		}
-		
+
 		public function get proportionalX():Number
 		{
 			throw new Error( "proportionalX not implemented" );
 		}
-		
+
 		public function get proportionalY():Number
 		{
 			throw new Error( "proportionaly not implemented" );
 		}
-		
+
 		public function get proportionalWidth():Number
 		{
 			throw new Error( "proportionalWidth not implemented" );
 		}
-		
+
 		public function get proportionalHeight():Number
 		{
 			throw new Error( "proportionalHeight not implemented" );
 		}
-		
+
 		public function get proportionalRectangle():Rectangle
 		{
 			throw new Error( "proportionalRectangle not implemented" );
 		}
-		
+
 		public function get maskPoints():Vector.<Point>
 		{
 			return null;
 		}
-		
+
 		public function get maskPointsOriginal():Vector.<Point>
 		{
 			return null;
 		}
-		
+
 		public function get viewRectOriginal():Rectangle
 		{
 			return new Rectangle();

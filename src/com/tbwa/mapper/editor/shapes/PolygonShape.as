@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,13 +16,13 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.editor.shapes
 {
 	import com.tbwa.mapper.quad.helpers.Circle;
 	import com.tbwa.utils.DraggableSprite;
-	
+
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -30,9 +30,9 @@ package com.tbwa.mapper.editor.shapes
 	import flash.geom.Rectangle;
 
 	/**
-	 * Class for point-based Quads (unlimited points, at least a polygon). 
+	 * Class for point-based Quads (unlimited points, at least a polygon).
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class PolygonShape extends AbstractShape
 	{
@@ -74,15 +74,15 @@ package com.tbwa.mapper.editor.shapes
 		private function onMouseDownHandler( event:MouseEvent ):void
 		{
 			var bounds:Rectangle = area.getBounds( area );
-			this.startDrag( false, new Rectangle( -bounds.x, -bounds.y, _viewPortWidth - area.width, _viewPortHeight - area.height ) );
+			this.startDrag( false, new Rectangle( -bounds.x, -bounds.y, _viewPortWidth - area.width, _viewPortHeight - area.height ));
 		}
-		
+
 		private function onMouseUpHandler( event:MouseEvent ):void
 		{
 			this.stopDrag();
 			this.updateHandler();
 		}
-		
+
 		public function addPoint( point:Point = null ):void
 		{
 			circle = new Circle( 15, this );
@@ -97,7 +97,7 @@ package com.tbwa.mapper.editor.shapes
 				circle.y = _height * 0.5;
 			}
 			this.points.push( circle );
-			this.maskPointsOriginal.push( new Point( circle.x, circle.y ) );
+			this.maskPointsOriginal.push( new Point( circle.x, circle.y ));
 			DraggableSprite.makeDraggable( circle, this.updateHandler );
 			this.addChild( circle );
 			this.updateHandler();
@@ -163,8 +163,8 @@ package com.tbwa.mapper.editor.shapes
 				tempX = this._contentWidth * ( this.points[ i ].x / _viewPortWidth );
 				tempY = this._contentHeight * ( this.points[ i ].y / _viewPortHeight );
 
-				pointVector.push( new Point( tempX, tempY ) );
-				tempSortVector.push( new Point( tempX, tempY ) );
+				pointVector.push( new Point( tempX, tempY ));
+				tempSortVector.push( new Point( tempX, tempY ));
 			}
 
 			tempSortVector.sort( sortVectorPointX );
@@ -190,7 +190,7 @@ package com.tbwa.mapper.editor.shapes
 			var i:int = 0;
 
 			for( i = 0; i < this.points.length; ++i )
-				pointVector.push( new Point( this.points[ i ].x, this.points[ i ].y ) );
+				pointVector.push( new Point( this.points[ i ].x, this.points[ i ].y ));
 
 			return pointVector;
 		}
@@ -208,7 +208,7 @@ package com.tbwa.mapper.editor.shapes
 		private function onRemovedFromStageHandler( event:Event ):void
 		{
 			while( this.points.length > 0 )
-				this.removeChild( this.points.pop() );
+				this.removeChild( this.points.pop());
 
 			this.points = null;
 

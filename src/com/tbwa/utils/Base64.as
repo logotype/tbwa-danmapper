@@ -67,8 +67,8 @@ package com.tbwa.utils
 				// Convert to data buffer Base64 character positions and 
 				// store in output buffer
 				outputBuffer[ 0 ] = ( dataBuffer[ 0 ] & 0xfc ) >> 2;
-				outputBuffer[ 1 ] = ( ( dataBuffer[ 0 ] & 0x03 ) << 4 ) | ( ( dataBuffer[ 1 ] ) >> 4 );
-				outputBuffer[ 2 ] = ( ( dataBuffer[ 1 ] & 0x0f ) << 2 ) | ( ( dataBuffer[ 2 ] ) >> 6 );
+				outputBuffer[ 1 ] = (( dataBuffer[ 0 ] & 0x03 ) << 4 ) | (( dataBuffer[ 1 ]) >> 4 );
+				outputBuffer[ 2 ] = (( dataBuffer[ 1 ] & 0x0f ) << 2 ) | (( dataBuffer[ 2 ]) >> 6 );
 				outputBuffer[ 3 ] = dataBuffer[ 2 ] & 0x3f;
 
 				// If data buffer was short (i.e not 3 characters) then set
@@ -84,7 +84,7 @@ package com.tbwa.utils
 				// encoded data string for each character.
 				for( var k:uint = 0; k < outputBuffer.length; k++ )
 				{
-					output += BASE64_CHARS.charAt( outputBuffer[ k ] );
+					output += BASE64_CHARS.charAt( outputBuffer[ k ]);
 				}
 			}
 
@@ -117,20 +117,20 @@ package com.tbwa.utils
 				// next 4 bytes from encoded data
 				for( var j:uint = 0; j < 4 && i + j < data.length; j++ )
 				{
-					dataBuffer[ j ] = BASE64_CHARS.indexOf( data.charAt( i + j ) );
+					dataBuffer[ j ] = BASE64_CHARS.indexOf( data.charAt( i + j ));
 				}
 
 				// Decode data buffer back into bytes
-				outputBuffer[ 0 ] = ( dataBuffer[ 0 ] << 2 ) + ( ( dataBuffer[ 1 ] & 0x30 ) >> 4 );
-				outputBuffer[ 1 ] = ( ( dataBuffer[ 1 ] & 0x0f ) << 4 ) + ( ( dataBuffer[ 2 ] & 0x3c ) >> 2 );
-				outputBuffer[ 2 ] = ( ( dataBuffer[ 2 ] & 0x03 ) << 6 ) + dataBuffer[ 3 ];
+				outputBuffer[ 0 ] = ( dataBuffer[ 0 ] << 2 ) + (( dataBuffer[ 1 ] & 0x30 ) >> 4 );
+				outputBuffer[ 1 ] = (( dataBuffer[ 1 ] & 0x0f ) << 4 ) + (( dataBuffer[ 2 ] & 0x3c ) >> 2 );
+				outputBuffer[ 2 ] = (( dataBuffer[ 2 ] & 0x03 ) << 6 ) + dataBuffer[ 3 ];
 
 				// Add all non-padded bytes in output buffer to decoded data
 				for( var k:uint = 0; k < outputBuffer.length; k++ )
 				{
 					if( dataBuffer[ k + 1 ] == 64 )
 						break;
-					output.writeByte( outputBuffer[ k ] );
+					output.writeByte( outputBuffer[ k ]);
 				}
 			}
 
@@ -157,25 +157,25 @@ package com.tbwa.utils
 				// next 4 bytes from encoded data and throw away the non-encoded characters. 
 				for( var j:uint = 0; j < 4 && i + j < data.length; j++ )
 				{
-					dataBuffer[ j ] = BASE64_CHARS.indexOf( data.charAt( i + j ) );
-					while( ( dataBuffer[ j ] < 0 ) && ( i < data.length ) )
+					dataBuffer[ j ] = BASE64_CHARS.indexOf( data.charAt( i + j ));
+					while(( dataBuffer[ j ] < 0 ) && ( i < data.length ))
 					{
 						i++;
-						dataBuffer[ j ] = BASE64_CHARS.indexOf( data.charAt( i + j ) );
+						dataBuffer[ j ] = BASE64_CHARS.indexOf( data.charAt( i + j ));
 					}
 				}
 
 				// Decode data buffer back into bytes
-				outputBuffer[ 0 ] = ( dataBuffer[ 0 ] << 2 ) + ( ( dataBuffer[ 1 ] & 0x30 ) >> 4 );
-				outputBuffer[ 1 ] = ( ( dataBuffer[ 1 ] & 0x0f ) << 4 ) + ( ( dataBuffer[ 2 ] & 0x3c ) >> 2 );
-				outputBuffer[ 2 ] = ( ( dataBuffer[ 2 ] & 0x03 ) << 6 ) + dataBuffer[ 3 ];
+				outputBuffer[ 0 ] = ( dataBuffer[ 0 ] << 2 ) + (( dataBuffer[ 1 ] & 0x30 ) >> 4 );
+				outputBuffer[ 1 ] = (( dataBuffer[ 1 ] & 0x0f ) << 4 ) + (( dataBuffer[ 2 ] & 0x3c ) >> 2 );
+				outputBuffer[ 2 ] = (( dataBuffer[ 2 ] & 0x03 ) << 6 ) + dataBuffer[ 3 ];
 
 				// Add all non-padded bytes in output buffer to decoded data
 				for( var k:uint = 0; k < outputBuffer.length; k++ )
 				{
 					if( dataBuffer[ k + 1 ] == 64 )
 						break;
-					output.writeByte( outputBuffer[ k ] );
+					output.writeByte( outputBuffer[ k ]);
 				}
 			}
 

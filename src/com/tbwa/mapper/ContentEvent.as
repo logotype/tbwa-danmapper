@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,24 +16,24 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper
 {
 	import flash.events.Event;
-	
+
 	/**
-	 * Quads listen/sends ContentEvent for synchronizing master/slave. 
+	 * Quads listen/sends ContentEvent for synchronizing master/slave.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class ContentEvent extends Event
 	{
 		static public const RESTART_MASTER:String = "restartMaster";
 		static public const RESTART:String = "restart";
-		
+
 		public var groupID:String;
-		
+
 		public function ContentEvent( type:String, groupID:String = "" )
 		{
 			this.groupID = groupID;

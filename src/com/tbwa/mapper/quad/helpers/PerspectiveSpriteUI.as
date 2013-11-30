@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,7 +16,7 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.quad.helpers
 {
@@ -29,9 +29,9 @@ package com.tbwa.mapper.quad.helpers
 	import flash.utils.Timer;
 
 	/**
-	 * 4 Control-Points for perspective control. 
+	 * 4 Control-Points for perspective control.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class PerspectiveSpriteUI extends Sprite
 	{
@@ -125,9 +125,9 @@ package com.tbwa.mapper.quad.helpers
 				{
 					if( currentCircle !== this.pointCloud.pointVector[ j ] && this !== this.pointCloud.pointVector[ j ].container )
 					{
-						if( currentCircle.hitTest.hitTestObject( this.pointCloud.pointVector[ j ].hitTest ) )
+						if( currentCircle.hitTest.hitTestObject( this.pointCloud.pointVector[ j ].hitTest ))
 						{
-							globalPoint = this.pointCloud.pointVector[ j ].localToGlobal( new Point() );
+							globalPoint = this.pointCloud.pointVector[ j ].localToGlobal( new Point());
 							localPoint = this.globalToLocal( globalPoint );
 							currentCircle.x = localPoint.x;
 							currentCircle.y = localPoint.y;
@@ -174,11 +174,11 @@ package com.tbwa.mapper.quad.helpers
 			var j:int = 0;
 			for( i; i < points.length; ++i )
 				for( j = 0; j < this.pointCloud.pointVector.length; ++j )
-					if( this.points[ i ] == this.pointCloud.pointVector[ j ] )
+					if( this.points[ i ] == this.pointCloud.pointVector[ j ])
 						this.pointCloud.pointVector.splice( j, 1 );
 
 			while( this.points.length > 0 )
-				this.removeChild( this.points.pop() );
+				this.removeChild( this.points.pop());
 
 			this.points = null;
 			this.pointCloud = null;

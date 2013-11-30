@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,38 +16,31 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.quad
 {
 	import com.greensock.TweenLite;
-	import com.greensock.TweenMax;
 	import com.greensock.easing.Linear;
 	import com.tbwa.mapper.ContentEvent;
 	import com.tbwa.mapper.EventProxy;
 	import com.tbwa.mapper.quad.AbstractQuad;
-	
+
 	import flash.display.Bitmap;
-	import flash.display.Sprite;
-	import flash.display.StageAlign;
-	import flash.display.StageScaleMode;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.geom.Rectangle;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
-	import flash.system.ApplicationDomain;
 	import flash.text.AntiAliasType;
-	import flash.text.Font;
 	import flash.text.StyleSheet;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
-	import flash.text.TextFormat;
 
 	/**
-	 * Template class for a RSS newsfeed. 
+	 * Template class for a RSS newsfeed.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class QuadNews extends AbstractQuad
 	{
@@ -57,9 +50,6 @@ package com.tbwa.mapper.quad
 
 		[Embed( source = "/../assets/quadnews/background.png" )]
 		public var backgroundImageClass:Class;
-
-		//[Embed( source = './assets/quadnews/DINNextLTPro-Light.otf', fontWeight = 'light', fontName = 'DINNextLTPro', mimeType = 'application/x-font', advancedAntiAliasing = 'false' )]
-		//private var newsFont:Class;
 
 		protected var loader:URLLoader;
 		protected var content:XML;
@@ -92,14 +82,14 @@ package com.tbwa.mapper.quad
 			if( this.isMaster )
 				startAnimation();
 		}
-		
+
 		protected function onRestartHandler( event:ContentEvent ):void
 		{
 			if( !this.isMaster && event.groupID == this.groupID )
 			{
 				TweenLite.killTweensOf( this );
 				textField.y = 640;
-				TweenLite.to( textField, ANIMATION_TIME, { y:-textField.height, ease:Linear.easeInOut } );
+				TweenLite.to( textField, ANIMATION_TIME, { y:-textField.height, ease:Linear.easeInOut });
 			}
 		}
 
@@ -135,10 +125,10 @@ package com.tbwa.mapper.quad
 
 			var i:int = 0;
 			var length:int = itemList.length();
-			
+
 			for( i; i < length; ++i )
 				textField.htmlText += "<h1>" + itemList[ i ].title + "</h1><p>" + itemList[ i ].description + "</p>\n\n";
-			
+
 			this.addChild( textField );
 			startAnimation();
 		}
@@ -153,8 +143,8 @@ package com.tbwa.mapper.quad
 			textField.y = 640;
 			if( this.isMaster )
 			{
-				TweenLite.to( textField, ANIMATION_TIME, { y:-textField.height, ease:Linear.easeInOut, onComplete:startAnimation } );
-				EventProxy.getInstance().dispatchEvent( new ContentEvent( ContentEvent.RESTART, this.groupID ) );
+				TweenLite.to( textField, ANIMATION_TIME, { y:-textField.height, ease:Linear.easeInOut, onComplete:startAnimation });
+				EventProxy.getInstance().dispatchEvent( new ContentEvent( ContentEvent.RESTART, this.groupID ));
 			}
 		}
 
@@ -162,17 +152,17 @@ package com.tbwa.mapper.quad
 		{
 			this.scrollRect = __viewRect;
 		}
-		
-		override public function dispose() :void
+
+		override public function dispose():void
 		{
 			TweenLite.killTweensOf( this );
-			
+
 			if( eventProxy )
 			{
 				eventProxy.removeEventListener( ContentEvent.RESTART, onRestartHandler );
 				eventProxy = null;
 			}
-			
+
 			if( loader )
 			{
 				itemList = null;

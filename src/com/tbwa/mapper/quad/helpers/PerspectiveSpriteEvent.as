@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,22 +16,22 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.quad.helpers
 {
 	import flash.events.Event;
-	
+
 	/**
-	 * Triggered when Quad changes, such as moved/transformed. 
+	 * Triggered when Quad changes, such as moved/transformed.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class PerspectiveSpriteEvent extends Event
 	{
 		static public const UPDATE_CONTEXTMENU:String = "updateContextMenu";
 		public var perspectiveSprite:PerspectiveSprite;
-		
+
 		public function PerspectiveSpriteEvent( type:String, perspectiveSprite:PerspectiveSprite )
 		{
 			this.perspectiveSprite = perspectiveSprite;

@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,12 +16,11 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.toolbox
 {
 	import com.bit101.components.List;
-	import com.bit101.components.ListItem;
 	import com.bit101.components.PushButton;
 	import com.bit101.components.Window;
 	import com.tbwa.mapper.ContentEvent;
@@ -31,7 +30,7 @@ package com.tbwa.mapper.toolbox
 	import com.tbwa.mapper.editor.EditorEvent;
 	import com.tbwa.mapper.editor.QuadTypes;
 	import com.tbwa.mapper.quad.AbstractQuad;
-	
+
 	import flash.display.DisplayObjectContainer;
 	import flash.display.StageDisplayState;
 	import flash.events.Event;
@@ -46,9 +45,9 @@ package com.tbwa.mapper.toolbox
 	import flash.utils.getDefinitionByName;
 
 	/**
-	 * ToolBox is the main UI for various functionality. 
+	 * ToolBox is the main UI for various functionality.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class ToolBox extends Window
 	{
@@ -63,7 +62,7 @@ package com.tbwa.mapper.toolbox
 			super( parent, xpos, ypos, title );
 			this.setSize( 560, 120 );
 			this.hasMinimizeButton = true;
-			this.filters = [ new DropShadowFilter( 0, 0, 0x000000, 1, 35, 35, 1, Preferences.UI_SHADOW_QUALITY ) ];
+			this.filters = [ new DropShadowFilter( 0, 0, 0x000000, 1, 35, 35, 1, Preferences.UI_SHADOW_QUALITY )];
 
 			eventProxy = EventProxy.getInstance();
 
@@ -80,7 +79,7 @@ package com.tbwa.mapper.toolbox
 			button = new PushButton( this, 230, 40, "ABOUT", this.about );
 			button = new PushButton( this, 230, 70, "HIDE", this.hideUI );
 
-			
+
 			libraryList = new List( this, 340, 10 );
 			libraryList.setSize( 210, 80 );
 			libraryList.addEventListener( Event.SELECT, onSelectHandler );
@@ -89,9 +88,9 @@ package com.tbwa.mapper.toolbox
 		}
 
 		/**
-		 * Loads the library list (XML format) into a list. Useful for common files. 
+		 * Loads the library list (XML format) into a list. Useful for common files.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function loadLibrary( event:Event = null ):void
 		{
@@ -105,9 +104,9 @@ package com.tbwa.mapper.toolbox
 		}
 
 		/**
-		 * Parses the XML and adds item to the list. 
+		 * Parses the XML and adds item to the list.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onLibraryCompleteHandler( event:Event ):void
 		{
@@ -132,13 +131,13 @@ package com.tbwa.mapper.toolbox
 			}
 
 			for( var i:int = 0; i < listItems.length(); ++i )
-				libraryList.addItem( { label:listItems[ i ].toString().toUpperCase(), file:String( listItems[ i ].@file ) } );
+				libraryList.addItem({ label:listItems[ i ].toString().toUpperCase(), file:String( listItems[ i ].@file )});
 		}
 
 		/**
-		 * Silent error handling. 
+		 * Silent error handling.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onLibraryErrorHandler( event:IOErrorEvent ):void
 		{
@@ -146,9 +145,9 @@ package com.tbwa.mapper.toolbox
 		}
 
 		/**
-		 * Triggered when clicking on a list item. Displays Editor and sets correct filetype. 
+		 * Triggered when clicking on a list item. Displays Editor and sets correct filetype.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onSelectHandler( event:Event ):void
 		{
@@ -168,68 +167,68 @@ package com.tbwa.mapper.toolbox
 		}
 
 		/**
-		 * Template item. Adds a RSS feed to the Editor. 
+		 * Template item. Adds a RSS feed to the Editor.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function addNews( event:MouseEvent = null ):void
 		{
 			var contentClass:Class = getDefinitionByName( QuadTypes.QUAD_NEWS ) as Class;
 			var abstractQuad:AbstractQuad = new contentClass() as AbstractQuad;
 			abstractQuad.isMaster = true;
-			
+
 			editor = new Editor( this.parent, abstractQuad, QuadTypes.QUAD_NEWS );
 			editor.x = this.stage.stageWidth - editor.width >> 1;
 			editor.y = this.stage.stageHeight - editor.height >> 1;
 			editor.addEventListener( Event.CLOSE, onCloseEditorHandler );
 		}
-		
+
 		/**
-		 * Template item. Adds a Camera-enabled Quad to the Editor. 
+		 * Template item. Adds a Camera-enabled Quad to the Editor.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function addCamera( event:MouseEvent = null ):void
 		{
 			var contentClass:Class = getDefinitionByName( QuadTypes.QUAD_CAMERA ) as Class;
 			var abstractQuad:AbstractQuad = new contentClass() as AbstractQuad;
 			abstractQuad.isMaster = true;
-			
+
 			editor = new Editor( this.parent, abstractQuad, QuadTypes.QUAD_CAMERA );
 			editor.x = this.stage.stageWidth - editor.width >> 1;
 			editor.y = this.stage.stageHeight - editor.height >> 1;
 			editor.addEventListener( Event.CLOSE, onCloseEditorHandler );
 		}
-		
+
 		/**
-		 * Triggers an application-wide synchronization event (restarts all Quads). 
+		 * Triggers an application-wide synchronization event (restarts all Quads).
 		 * @param event
-		 * 
+		 *
 		 */
 		private function synchronize( event:MouseEvent = null ):void
 		{
-			EventProxy.getInstance().dispatchEvent( new ContentEvent( ContentEvent.RESTART_MASTER ) );
+			EventProxy.getInstance().dispatchEvent( new ContentEvent( ContentEvent.RESTART_MASTER ));
 		}
 
 		/**
-		 * Closes the Editor and cleans up. 
+		 * Closes the Editor and cleans up.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onCloseEditorHandler( event:Event ):void
 		{
 			editor.removeEventListener( Event.CLOSE, onCloseEditorHandler );
 
-			if( this.parent.contains( editor ) )
+			if( this.parent.contains( editor ))
 				this.parent.removeChild( editor );
 
 			editor = null;
 		}
 
 		/**
-		 * Browses for file on local disk. 
+		 * Browses for file on local disk.
 		 * @param event
-		 * 
+		 *
 		 */
 		public function browseFile( event:MouseEvent = null ):void
 		{
@@ -238,13 +237,13 @@ package com.tbwa.mapper.toolbox
 			file.addEventListener( Event.CANCEL, onFileCanceledHandler );
 
 			if( !editor )
-				file.browse( [ new FileFilter( "MOV/MP4 Files", "*.mov; *.mp4" ), new FileFilter( "SWF", "*.swf" ) ] );
+				file.browse([ new FileFilter( "MOV/MP4 Files", "*.mov; *.mp4" ), new FileFilter( "SWF", "*.swf" )]);
 		}
 
 		/**
-		 * Handler method for local disk files. 
+		 * Handler method for local disk files.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onFileSelectedHandler( event:Event ):void
 		{
@@ -288,9 +287,9 @@ package com.tbwa.mapper.toolbox
 		}
 
 		/**
-		 * Remove file browser when user has cancelled. 
+		 * Remove file browser when user has cancelled.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onFileCanceledHandler( event:Event ):void
 		{
@@ -299,55 +298,55 @@ package com.tbwa.mapper.toolbox
 		}
 
 		/**
-		 * Trigger save to disk function. 
+		 * Trigger save to disk function.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function save( event:MouseEvent = null ):void
 		{
-			eventProxy.dispatchEvent( new EditorEvent( EditorEvent.SAVE, "null", new Rectangle() ) );
+			eventProxy.dispatchEvent( new EditorEvent( EditorEvent.SAVE, "null", new Rectangle()));
 		}
 
 		/**
-		 * Trigger load from disk function. 
+		 * Trigger load from disk function.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function load( event:MouseEvent = null ):void
 		{
-			eventProxy.dispatchEvent( new EditorEvent( EditorEvent.LOAD, "null", new Rectangle() ) );
+			eventProxy.dispatchEvent( new EditorEvent( EditorEvent.LOAD, "null", new Rectangle()));
 		}
 
 		/**
-		 * Toggles fullscreen mode. 
+		 * Toggles fullscreen mode.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function fullscreen( event:MouseEvent = null ):void
 		{
 			this.stage.nativeWindow.maximize();
 			this.stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 		}
-		
+
 		/**
-		 * Displays About view. 
+		 * Displays About view.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function about( event:MouseEvent = null ):void
 		{
 			event.stopImmediatePropagation();
-			eventProxy.dispatchEvent( new ToolBoxEvent( ToolBoxEvent.ABOUT ) );
+			eventProxy.dispatchEvent( new ToolBoxEvent( ToolBoxEvent.ABOUT ));
 		}
-		
+
 		/**
-		 * Toggles UI. 
+		 * Toggles UI.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function hideUI( event:MouseEvent = null ):void
 		{
-			eventProxy.dispatchEvent( new ToolBoxEvent( ToolBoxEvent.UI_HIDE ) );
+			eventProxy.dispatchEvent( new ToolBoxEvent( ToolBoxEvent.UI_HIDE ));
 		}
 	}
 }

@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,26 +16,22 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.quad
 {
 	import com.tbwa.mapper.ContentEvent;
-	import com.tbwa.mapper.EventProxy;
 	import com.tbwa.mapper.quad.AbstractQuad;
 
-	import flash.display.Sprite;
-	import flash.display.StageAlign;
-	import flash.display.StageScaleMode;
 	import flash.events.Event;
 	import flash.geom.Rectangle;
 	import flash.media.Camera;
 	import flash.media.Video;
 
 	/**
-	 * Template class for a Quad with realtime Camera. 
+	 * Template class for a Quad with realtime Camera.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class QuadCamera extends AbstractQuad
 	{
@@ -56,7 +52,7 @@ package com.tbwa.mapper.quad
 		protected function onRestartMasterHandler( event:Event ):void
 		{
 			if( this.isMaster )
-				eventProxy.dispatchEvent( new ContentEvent( ContentEvent.RESTART, this.groupID ) );
+				eventProxy.dispatchEvent( new ContentEvent( ContentEvent.RESTART, this.groupID ));
 		}
 
 		protected function onRestartHandler( event:ContentEvent ):void
@@ -64,9 +60,9 @@ package com.tbwa.mapper.quad
 		}
 
 		/**
-		 * Triggered when stage is available, sets Camera quality and attaches to Video object. 
+		 * Triggered when stage is available, sets Camera quality and attaches to Video object.
 		 * @param event
-		 * 
+		 *
 		 */
 		private function onAddedToStageHandler( event:Event ):void
 		{
@@ -119,13 +115,13 @@ package com.tbwa.mapper.quad
 				eventProxy.removeEventListener( ContentEvent.RESTART, onRestartHandler );
 				eventProxy = null;
 			}
-			
+
 			if( video )
 				video.attachCamera( null );
-			
+
 			if( camera )
 				camera = null;
-			
+
 			super.dispose();
 		}
 	}

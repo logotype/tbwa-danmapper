@@ -1,7 +1,7 @@
 /**
  * Copyright © 2013 TBWA\ Digital Arts Network
  * Authors: Victor Norgren, Mimosa Poon
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
  * deal in the Software without restriction, including without limitation the
@@ -16,14 +16,15 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- * IN THE SOFTWARE. 
+ * IN THE SOFTWARE.
  */
 package com.tbwa.mapper.quad.helpers
 {
+
 	/**
-	 * Contains all Quads Control-Points for snapping to nearest Point. 
+	 * Contains all Quads Control-Points for snapping to nearest Point.
 	 * @author logotype
-	 * 
+	 *
 	 */
 	public class PointCloud
 	{
@@ -38,7 +39,7 @@ package com.tbwa.mapper.quad.helpers
 		static public function getInstance():PointCloud
 		{
 			if( instance == null )
-				instance = new PointCloud( new SingletonEnforcer() );
+				instance = new PointCloud( new SingletonEnforcer());
 
 			return instance;
 		}
