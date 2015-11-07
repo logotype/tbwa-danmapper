@@ -53,7 +53,7 @@ Authors
 Copyright and license
 ---------------------
 
-Copyright © 2012 TBWA\ Digital Arts Network
+Copyright © 2015
 
 Authors: Victor Norgren, Mimosa Poon
 
