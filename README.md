@@ -1,8 +1,6 @@
 [TBWA\DAN Mapper](http://labs.tbwa.com.hk/danmapper/)
 =================
 
-<img src="http://logotype.se/dnmp.png">
-
 Projection Mapping is a exciting projection technique that can turn almost any surface or object into a dynamic video display. DANMapper can mask and distort the projected image and make it fit perfectly on different perspectives. When done right, the end result is a dynamic projection installation that transcends ordinary video projection. 
 
 All you need is a projector to get started. Launch DANMapper, browse for a video or SWF. For realtime data, you can import any SWF which loads external data, displays charts, physics engines, news feeds, games and more. DANMapper is built with a minimal interface and easy-to-use functions. You'll see a live preview on your screen, and context menus for fast editing. To hide the UI and make the projection live, simply double click. 
@@ -53,7 +51,7 @@ Authors
 Copyright and license
 ---------------------
 
-Copyright © 2015
+Copyright © 2017
 
 Authors: Victor Norgren, Mimosa Poon
 
@@ -74,3 +72,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE. 
 
+--------------------------
+Built with IntelliJ IDEA Open Source License
+
+<a href="https://www.jetbrains.com/buy/opensource/"><img src="https://s3-ap-southeast-1.amazonaws.com/www.logotype.se/assets/logo-text.svg" width="200"></a>
+
+The people at JetBrains supports the Open Source community by offering free licences. Check out <a href="https://www.jetbrains.com/buy/opensource/">JetBrains Open Source</a> to apply for your project. Thank you!
